@@ -15,7 +15,15 @@ const connectDB = require("./config/db");
 const app = express();
 
 // 2. Global Middleware NEXT
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://libra-ai-expense-tracker.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // 3. Routes AFTER middleware
